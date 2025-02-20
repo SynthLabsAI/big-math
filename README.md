@@ -1,2 +1,3 @@
 # Big-Math
-The largest open-source repository of RL-suitable math problems
+
+Repository in-progress. Expect code by 02/24/2025
