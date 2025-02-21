@@ -1,9 +1,10 @@
 <!-- # Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models -->
-<p align="center">
-    <a href="big_math_front_page.png" target="_blank">
-        <img src="big_math_front_page.png" alt="Big Math Front Page" style="width: 25%;" onmouseover="this.style.width='75%'" onmouseout="this.style.width='25%'">
-    </a>
-</p>
+<details open>
+    <summary>Click to collapse front page</summary>
+    <p align="center">
+        <img src="big_math_front_page.png" alt="Big Math Front Page" style="width: 75%;">
+    </p>
+</details>
 
 <p align="center">
         <a href="https://alon-albalak.github.io/images/Big_MATH.pdf" target="_blank" rel="noopener noreferrer">
@@ -40,12 +41,13 @@ This folder contains code used to generate signals on a dataset. For example, th
 - duplicate detection
 - language identification
 - model solve rate
+- and more!
 
 ### Reformulation
 
 This folder contains code used to reformulate multiple choice problems to open-ended questions.
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 - python 3.10+
@@ -63,7 +65,7 @@ This folder contains code used to reformulate multiple choice problems to open-e
         pip install -r signals/requirements.txt -r reformulation/requirements.txt
         ```
 
-### Usage
+### 🛠 Usage
 
 #### Reformulation
 See [the reformulation readme](https://github.com/SynthLabsAI/big-math/blob/master/reformulation/README.md) for an explanation of files and usage.
@@ -71,7 +73,7 @@ See [the reformulation readme](https://github.com/SynthLabsAI/big-math/blob/mast
 #### Signals
 See [the signals readme](https://github.com/SynthLabsAI/big-math/blob/master/signals/README.md) for an explanation of files and usage.
 
-## Citation
+## 📄 Citation
 
 ```bibtex
 @techreport{albalak2025bigmath,
@@ -86,4 +88,4 @@ See [the signals readme](https://github.com/SynthLabsAI/big-math/blob/master/sig
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/SynthLabsAI/big-math/blob/master/LICENSE) for details.
