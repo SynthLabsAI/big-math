@@ -8,7 +8,7 @@ from pydantic import BaseModel, Field, field_validator
 import traceback
 from tqdm import tqdm
 
-from utils.sglang_util import SGLangServerManager
+from rollouts_based_signals.utils.sglang_util import SGLangServerManager
 
 class ModelType(str, Enum):
     """supported llm model types"""
