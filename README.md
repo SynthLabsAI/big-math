@@ -76,10 +76,6 @@ See [the reformulation readme](https://github.com/SynthLabsAI/big-math/blob/mast
 }
 ```
 
-## Preview
-
-<iframe src="https://drive.google.com/file/d/19eeuLarp3Kr-99lXoYZ-YW9AHmZ5sszg/preview" style="width: 100%; height: 75vh" allow="autoplay"></iframe>
-
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
