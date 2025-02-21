@@ -2,6 +2,20 @@
 
 The **Multiple Choice Reformulator** is designed to transform multiple choice questions into open-ended questions using dspy. The tool is designed for research purposes.
 
+
+<!-- Add white background if the user is in dark mode -->
+<style>
+@media (prefers-color-scheme: dark) {
+    img {
+        background-color: white;
+        padding: 10px;
+    }
+}
+</style>
+
+<img src="big_math_reformulation.png" alt="Our Reformulation Strategy" style="width:100%;"/>
+
+
 ## Folder Structure
 
 - `main.py`: The main entry point for the reformulation process.
