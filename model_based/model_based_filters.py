@@ -351,8 +351,6 @@ async def main():
         items['true_false'] = [formatted_items(row[problem_column_name], "true_false") for _, row in df.iterrows()]
     if args.multiple_part:
         items['multiple_part'] = [formatted_items(row[problem_column_name], "multiple_part") for _, row in df.iterrows()]
-    if args.good_bad:
-        items['good_bad'] = [formatted_items(row[problem_column_name], "good_bad") for _, row in df.iterrows()]
 
 
     # Process items in batches
@@ -404,7 +402,6 @@ async def main():
     # Save final results
     try:
         df.to_parquet(os.path.join(save_folder, f"{save_name}.parquet"))
-        # df = df.drop(columns=['raw_responses'])
         ds = Dataset.from_pandas(df)
         ds.push_to_hub(hf_save_dataset_name, private=True)
         print(f"Saved to {os.path.join(save_folder, f'{save_name}.parquet')}")
@@ -429,7 +426,6 @@ if __name__ == "__main__":
     parser.add_argument("--yes_no", action="store_true")
     parser.add_argument("--true_false", action="store_true")
     parser.add_argument("--multiple_part", action="store_true")
-    parser.add_argument("--good_bad", action="store_true")
 
     # Save configuration
     parser.add_argument("--save_folder", type=str, required=True)
