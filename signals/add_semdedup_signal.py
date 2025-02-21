@@ -1,10 +1,8 @@
 from datasets import load_dataset
 from functools import partial
 import multiprocessing as mp
-
-from utils import DATASET_PATH
+import argparse
 from semdedup import semantic_deduplication
-
 
 def merge_problem_and_answer(row):
     row['problem_answer'] = f"Problem: {row['problem']} Answer: {row['final_answer']}"
@@ -14,12 +12,10 @@ def is_semdedup_duplicate(row, idx, indices_to_remove, epsilon):
     row[f'is_semdedup_duplicate_eps{epsilon}'] = idx in indices_to_remove
     return row
 
-
-def main():
+def main(dataset_path):
     EPSILONS = [0.5]
 
-
-    dataset = load_dataset(DATASET_PATH, split="train")
+    dataset = load_dataset(dataset_path, split="train")
     print(f"Original Dataset: {dataset}")
     
     # create a new column that merges the problem and the answer
@@ -48,7 +44,10 @@ def main():
     dataset = dataset.remove_columns("problem_answer")
 
     # push the merged dataset to the hub
-    dataset.push_to_hub(DATASET_PATH, private=True)
+    dataset.push_to_hub(dataset_path)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Detect semantic duplicates in a dataset.")
+    parser.add_argument('dataset_path', type=str, help='Path to the dataset')
+    args = parser.parse_args()
+    main(args.dataset_path)

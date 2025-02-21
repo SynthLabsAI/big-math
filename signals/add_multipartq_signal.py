@@ -1,9 +1,7 @@
 from datasets import load_dataset
 import multiprocessing as mp
 import re
-
-# load the utilities to add a new signal to the master dataset
-from utils import DATASET_PATH
+import argparse
 
 def has_multi_part_q(row):
     lower_problem = row['problem'].lower()
@@ -29,17 +27,18 @@ def has_multi_part_q(row):
     
     return row
 
-def main():
-
+def main(dataset_path):
     # load the dataset
-    dataset = load_dataset(DATASET_PATH, split="train")
+    dataset = load_dataset(dataset_path, split="train")
 
     # run multi-part question detection over the full dataset
     dataset = dataset.map(has_multi_part_q, num_proc=mp.cpu_count())
 
     # push the updated dataset
-    dataset.push_to_hub(DATASET_PATH)
-
+    dataset.push_to_hub(dataset_path)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Detect multi-part questions in a dataset.")
+    parser.add_argument('dataset_path', type=str, help='Path to the dataset')
+    args = parser.parse_args()
+    main(args.dataset_path)

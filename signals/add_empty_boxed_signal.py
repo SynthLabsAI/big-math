@@ -2,9 +2,7 @@ from datasets import load_dataset
 from functools import partial
 import multiprocessing as mp
 import re
-
-
-from utils import DATASET_PATH
+import argparse
 
 def is_boxed_empty(row, patterns):
     row['is_boxed_empty'] = False
@@ -14,9 +12,9 @@ def is_boxed_empty(row, patterns):
             break
     return row
 
-def main():
+def main(dataset_path):
     # load the dataset
-    dataset = load_dataset(DATASET_PATH, split="train")
+    dataset = load_dataset(dataset_path, split="train")
 
     # define the regex pattern for an empty boxed solution
     empty_boxed_patterns = [
@@ -30,12 +28,14 @@ def main():
     dataset = dataset.map(is_boxed_empty_partial, num_proc=mp.cpu_count())
 
     # add the new column, 'is_boxed_empty', to the dataset
-    dataset.push_to_hub(DATASET_PATH)
+    dataset.push_to_hub(dataset_path)
 
     # print stats
     boxed_empty_only = dataset.filter(lambda x: x['is_boxed_empty'])
     print(f"Boxed empty: {len(boxed_empty_only)} / {len(dataset)}")
 
-
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description="Detect empty boxed solutions in a dataset.")
+    parser.add_argument('dataset_path', type=str, help='Path to the dataset')
+    args = parser.parse_args()
+    main(args.dataset_path)

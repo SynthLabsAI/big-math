@@ -27,7 +27,6 @@ def remove_latex_commands(text):
     text = re.sub(r'\\frac\{[^{}]*\}\{[^{}]*\}', '', text)
 
     # Remove commands with arguments
-    # text = re.sub(r'\\[a-zA-Z]+\{[^}]*\}', '', text)
     text = re.sub(r'\\[a-zA-Z]+\{[^{}]*\}', '', text)
     
     # Remove standalone commands

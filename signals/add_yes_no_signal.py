@@ -1,11 +1,9 @@
 from datasets import load_dataset
 import re
-
-from utils import DATASET_PATH
+import argparse
 
 def add_yes_no_signal(row):
     row['is_yes_no_question'] = False
-
 
     # check if the solution responds with yes/no
     # if final answer is not empty, check that first
@@ -33,15 +31,18 @@ def add_yes_no_signal(row):
 
     return row
 
-def main():
+def main(dataset_path):
     # load the dataset
-    dataset = load_dataset(DATASET_PATH, split="train")
+    dataset = load_dataset(dataset_path, split="train")
 
     # run the detection over the full dataset
     dataset = dataset.map(add_yes_no_signal)
 
     # push the dataset
-    dataset.push_to_hub(DATASET_PATH)
+    dataset.push_to_hub(dataset_path)
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description="Detect yes/no questions in a dataset.")
+    parser.add_argument('dataset_path', type=str, help='Path to the dataset')
+    args = parser.parse_args()
+    main(args.dataset_path)

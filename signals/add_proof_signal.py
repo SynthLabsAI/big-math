@@ -1,11 +1,9 @@
 from datasets import load_dataset
 import multiprocessing as mp
 import nltk
+import argparse
 
 nltk.download('punkt_tab')
-
-# load the utilities to add a new signal to the master dataset
-from utils import DATASET_PATH
 
 # given a single row of the dataset, determine if there is a proof
 def has_proof(row):
@@ -26,16 +24,18 @@ def has_proof(row):
 
     return row
 
-def main():
-
+def main(dataset_path):
     # load the dataset
-    dataset = load_dataset(DATASET_PATH, split="train")
+    dataset = load_dataset(dataset_path, split="train")
 
     # run proof detection over the full dataset
     dataset = dataset.map(has_proof, num_proc=mp.cpu_count())
 
     # push the dataset
-    dataset.push_to_hub(DATASET_PATH)
+    dataset.push_to_hub(dataset_path)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Detect proofs in a dataset.")
+    parser.add_argument('dataset_path', type=str, help='Path to the dataset')
+    args = parser.parse_args()
+    main(args.dataset_path)

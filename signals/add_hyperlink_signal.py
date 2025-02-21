@@ -1,16 +1,13 @@
 from datasets import load_dataset
 import multiprocessing as mp
 import re
-
-from utils import DATASET_PATH
+import argparse
 
 def detect_latex_hyperlinks(row):
-
     # Check for \url{} links
     url_pattern = r'\\url'
     # Check for \href{}{} links
     href_pattern = r'\\href'
-
     # Check for http:// or https:// links
     http_pattern = r'http://'
     https_pattern = r'https://'
@@ -35,15 +32,18 @@ def detect_latex_hyperlinks(row):
 
     return row
 
-def main():
+def main(dataset_path):
     # load the dataset
-    dataset = load_dataset(DATASET_PATH, split="train")
+    dataset = load_dataset(dataset_path, split="train")
 
     # run hyperlink detection over the full dataset
     dataset = dataset.map(detect_latex_hyperlinks, num_proc=mp.cpu_count())
 
     # push the updated dataset
-    dataset.push_to_hub(DATASET_PATH)
+    dataset.push_to_hub(dataset_path)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Detect LaTeX hyperlinks in a dataset.")
+    parser.add_argument('dataset_path', type=str, help='Path to the dataset')
+    args = parser.parse_args()
+    main(args.dataset_path)

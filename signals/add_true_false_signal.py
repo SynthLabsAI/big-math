@@ -1,8 +1,7 @@
 from datasets import load_dataset
 import re
 import multiprocessing as mp
-
-from utils import DATASET_PATH
+import argparse
 
 def is_true_false(row):
     row['is_true_false_question'] = False
@@ -22,16 +21,18 @@ def is_true_false(row):
 
     return row
 
-def main():
-
+def main(dataset_path):
     # load the dataset
-    dataset = load_dataset(DATASET_PATH, split="train")
+    dataset = load_dataset(dataset_path, split="train")
 
     # run proof detection over the full dataset
     dataset = dataset.map(is_true_false, num_proc=mp.cpu_count())
 
     # push the dataset
-    dataset.push_to_hub(DATASET_PATH)
+    dataset.push_to_hub(dataset_path)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Detect true/false questions in a dataset.")
+    parser.add_argument('dataset_path', type=str, help='Path to the dataset')
+    args = parser.parse_args()
+    main(args.dataset_path)
