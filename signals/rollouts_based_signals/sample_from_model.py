@@ -5,6 +5,7 @@ from enum import Enum
 import json
 import os
 from pydantic import BaseModel, Field, field_validator
+import tenacity
 import traceback
 from tqdm import tqdm
 
@@ -267,6 +268,15 @@ def format_items(problem, system_prompt):
         {"role": "user", "content": problem}
     ]
 
+@tenacity.retry(stop=tenacity.stop_after_attempt(5), wait=tenacity.wait_exponential(multiplier=1, min=4, max=10))
+async def get_chat_responses(server_handler, batch_items, n, top_p, temperature, max_tokens):
+    return await server_handler.get_chat_responses(
+        batch_items,
+        n=n, 
+        top_p=top_p, 
+        temperature=temperature,
+        max_tokens=max_tokens
+    )
 
 async def main():
     # Configuration
@@ -332,8 +342,9 @@ async def main():
     with SGLangServerManager(model_name, tp=args.tp) as server_handler:
         for idx in tqdm(range(0, total_items, batch_size)):
             batch_items = items[idx:idx+batch_size]
-            batch_outputs = await server_handler.get_chat_responses(
-                batch_items,
+            batch_outputs = await get_chat_responses(
+                server_handler=server_handler,
+                batch_items=batch_items,
                 n=llm_params.n, 
                 top_p=llm_params.top_p, 
                 temperature=llm_params.temperature,

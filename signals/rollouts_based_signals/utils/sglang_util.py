@@ -54,7 +54,7 @@ class SGLangServerManager(OpenAIServerManager):
 
         # Correctly generate ports based on tp and available devices
         # (Even if we only launch one process, we keep a list for compatibility.)
-        ports = [port for port in range(start_port, start_port + len(devices), tp)]
+        ports = [start_port for port in range(start_port, start_port + len(devices), tp)]
 
         # Build the command as a list to avoid using the shell
         cmd = [
