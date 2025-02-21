@@ -1,0 +1,15 @@
+asynciolimiter==1.0.0
+datasets==3.0.1
+faiss_cpu==1.9.0.post1
+fasttext==0.9.3
+huggingface_hub==0.26.1
+loguru==0.7.2
+nltk==3.9.1
+openai==1.63.2
+pandas==2.2.3
+pydantic==2.10.6
+sympy==1.13.3
+tenacity==9.0.0
+torch==2.4.0
+tqdm==4.66.5
+transformers==4.45.2
