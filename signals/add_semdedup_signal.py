@@ -4,6 +4,8 @@ import multiprocessing as mp
 import argparse
 from semdedup import semantic_deduplication
 
+EPSILONS = [0.5]
+
 def merge_problem_and_answer(row):
     row['problem_answer'] = f"Problem: {row['problem']} Answer: {row['final_answer']}"
     return row
@@ -13,7 +15,6 @@ def is_semdedup_duplicate(row, idx, indices_to_remove, epsilon):
     return row
 
 def main(dataset_path):
-    EPSILONS = [0.5]
 
     dataset = load_dataset(dataset_path, split="train")
     print(f"Original Dataset: {dataset}")
