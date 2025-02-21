@@ -4,9 +4,7 @@ from functools import partial
 from huggingface_hub import hf_hub_download
 import multiprocessing as mp
 import re
-
-# load the utilities to add a new signal to the master dataset
-from utils import DATASET_PATH
+import argparse
 
 # load the fasttext language identification model
 model_path = hf_hub_download(repo_id="facebook/fasttext-language-identification", filename="model.bin")
@@ -45,7 +43,6 @@ def predict_text(text: str):
     preds = fasttext_lang_id_model.predict(text, k=-1)
     return [(label.replace("__label__", ""), float(score)) for label, score in zip(*preds)]
 
-
 def detect_lang(row, column_name='problem'):
     if not row[column_name]:
         row[f'fasttext_lang_{column_name}'] = []
@@ -81,14 +78,14 @@ def detect_lang(row, column_name='problem'):
 
     return row
 
-def main():
+def main(dataset_path):
     # define the columns to detect language on
     detect_language_on = ["problem", "final_answer"]
     new_columns = [f'{col}_language' for col in detect_language_on]
     new_columns += [f'fasttext_lang_{col}' for col in detect_language_on]
 
     # load the dataset
-    dataset = load_dataset(DATASET_PATH, split="train")
+    dataset = load_dataset(dataset_path, split="train")
 
     for col in detect_language_on:
         # create function on the "problem" column
@@ -98,7 +95,10 @@ def main():
         dataset = dataset.map(detect_language, num_proc=mp.cpu_count())
 
     # push the updated dataset
-    dataset.push_to_hub(DATASET_PATH)
+    dataset.push_to_hub(dataset_path)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Detect language in a dataset.")
+    parser.add_argument('dataset_path', type=str, help='Path to the dataset')
+    args = parser.parse_args()
+    main(args.dataset_path)
