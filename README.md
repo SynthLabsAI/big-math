@@ -1,4 +1,5 @@
-<!-- # Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models -->
+# Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models
+
 <details open>
     <summary>Click to collapse front page</summary>
     <p align="center">
@@ -36,12 +37,19 @@ This repo consists of 2 main directories: signals and reformulation.
 
 ### Signals
 
-This folder contains code used to generate signals on a dataset. For example, this includes:
-- proof detection
-- duplicate detection
-- language identification
-- model solve rate
-- and more!
+This folder contains code used to generate signals on a dataset. The below signals can be generated either using rule-based methods or model-based methods:
+
+| Signal                | Rule-Based | Model-Based |
+|-----------------------|------------|-------------|
+| Hyperlink Detection       | ✅         |             |
+| Language Identification | ✅         |             |
+| Semantic Duplicate       |          | ✅            |
+| Multiple Choice Question | ✅       | ✅        |
+| Multi-Part Question     | ✅         |  ✅           |
+| True/False Question       | ✅         |   ✅          |
+| Yes/No Question     | ✅     | ✅    |
+| Proof Detection       | ✅         |             |
+| Model Solve Rate      |            | ✅          |
 
 ### Reformulation
 

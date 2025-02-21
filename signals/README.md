@@ -7,7 +7,7 @@ The `signals` folder contains scripts and resources for implementing rule-based 
 ## 📂 Contents
 
 ### Rule-based filters
-- `add_empty_boxed_signal.py`
+- `add_empty_boxed_signal.py` (only useful for extracting answers from full solutions (e.g. from [NuminaMath](https://huggingface.co/datasets/AI-MO/NuminaMath-CoT)))
 - `add_hyperlink_signal.py`
 - `add_language_signal.py`
 - `add_multipartq_signal.py`
