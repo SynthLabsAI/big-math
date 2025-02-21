@@ -9,7 +9,7 @@ EVAL_DATASET_PATH="SynthLabsAI/Big-Math-RL-Verified"
 SAVE_DATASET_PATH="<your dataset path here>"
 
 # local path to save intermediate results to
-INTERMEDIATE_STEPS_SAVE_DIR="testing_inference_eval_pipeline"
+INTERMEDIATE_STEPS_SAVE_DIR="llama8b_solve_rate"
 
 # column to save the models responses to
 RESPONSE_COLUMN_NAME="llama8b_response"
