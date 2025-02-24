@@ -1,7 +1,7 @@
 # Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models
 
 <details open>
-    <summary>Click to collapse front page</summary>
+    <summary>Click to collapse paper preview</summary>
     <p align="center">
         <img src="big_math_front_page.png" alt="Big Math Front Page" style="width: 75%;">
     </p>
@@ -27,7 +27,7 @@ Find the dataset on HuggingFace at [https://huggingface.co/datasets/SynthLabsAI/
 
 
 > [!WARNING]
-> This repo is intended for research purposes, and is thus under constant development. Please except major changes to the design.
+> This repo is intended for research purposes, and is thus under constant development. Please expect major changes to the design.
 > The primary goal of the big-math repo is to share the filtering and reformulation code for creating the Big-MATH dataset and to speed the development of future datasets.
 > The Big-Math dataset is intended only for RL training of LLMs, it does not contain rollouts
 
