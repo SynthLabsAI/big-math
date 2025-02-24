@@ -42,13 +42,13 @@ This folder contains code used to generate signals on a dataset. The below signa
 | Signal                | Rule-Based | Model-Based |
 |-----------------------|------------|-------------|
 | Hyperlink Detection       | ✅         |             |
-| Language Identification | ✅         |             |
+| Language Identification |          |    ✅         |
 | Semantic Duplicate       |          | ✅            |
 | Multiple Choice Question | ✅       | ✅        |
 | Multi-Part Question     | ✅         |  ✅           |
 | True/False Question       | ✅         |   ✅          |
 | Yes/No Question     | ✅     | ✅    |
-| Proof Detection       | ✅         |             |
+| Proof Detection       | ✅         |   ✅          |
 | Model Solve Rate      |            | ✅          |
 
 ### Reformulation
