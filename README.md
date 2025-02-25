@@ -8,7 +8,7 @@
 </details>
 
 <p align="center">
-        <a href="https://alon-albalak.github.io/images/Big_MATH.pdf" target="_blank" rel="noopener noreferrer">
+        <a href="https://arxiv.org/abs/2502.17387" target="_blank" rel="noopener noreferrer">
                 <img alt="Static Badge" src="https://img.shields.io/badge/Arxiv-Paper-CE0000">
         </a>
         <a href="https://huggingface.co/datasets/SynthLabsAI/Big-Math-RL-Verified">
