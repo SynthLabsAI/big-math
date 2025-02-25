@@ -17,10 +17,10 @@
 </p>
 
 <p align="center">
-        <a href="https://tally.so/r/nPGeyP" target="_blank" rel="noopener noreferrer">
+        <a href="https://forms.synthlabs.ai/big-math" target="_blank" rel="noopener noreferrer">
                 <img alt="Request Early Access" src="https://img.shields.io/badge/🔒_REQUEST_EARLY_ACCESS-grey?style=for-the-badge">
         </a>
-        <a href="https://tally.so/r/nPGeyP" target="_blank" rel="noopener noreferrer">
+        <a href="https://forms.synthlabs.ai/big-math" target="_blank" rel="noopener noreferrer">
                 <img alt="Private Reasoning Evals" src="https://img.shields.io/badge/PRIVATE_REASONING_EVALS-FFB5D8?style=for-the-badge">
         </a>
 </p>
