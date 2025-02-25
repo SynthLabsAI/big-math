@@ -84,13 +84,14 @@ See [the signals readme](https://github.com/SynthLabsAI/big-math/blob/master/sig
 ## 📄 Citation
 
 ```bibtex
-@techreport{albalak2025bigmath,
-    title = {Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models},
-    author = {Alon Albalak and Duy Phung and Nathan Lile and Rafael Rafailov and Kanishk Gandhi and Louis Castricato and Anikait Singh and Chase Blagden and Violet Xiang and Dakota Mahan and Nick Haber},
-    institution = {SynthLabs and Stanford University},
-    year = {2025},
-    type = {Technical Report},
-    url = {https://github.com/SynthLabsAI/big-math},
+@misc{albalak2025bigmathlargescalehighqualitymath,
+      title={Big-Math: A Large-Scale, High-Quality Math Dataset for Reinforcement Learning in Language Models}, 
+      author={Alon Albalak and Duy Phung and Nathan Lile and Rafael Rafailov and Kanishk Gandhi and Louis Castricato and Anikait Singh and Chase Blagden and Violet Xiang and Dakota Mahan and Nick Haber},
+      year={2025},
+      eprint={2502.17387},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2502.17387}, 
 }
 ```
 
